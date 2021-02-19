@@ -40,6 +40,7 @@ html, body {
 
 .nav:hover {
       background-image: linear-gradient(rgba(194,238,194,255), rgba(144,238,144,255)) !important;
+      transition: background-image 500ms ease-out !important;
 }
 
 .nav #wname {
@@ -65,19 +66,19 @@ html, body {
       font-size: 20px;
       line-height: 80px;
       position: relative;
-      transition: all 500ms ease-out;
+      transition: all 500ms ease-out !important;
 }
 
 .nav #menu li a {
       font-family: "Calibri" !important;
       color: rgb(6, 56, 6);
-      transition: all 500ms ease-out;
+      transition: all 500ms ease-out !important;
 }
 
 .nav #menu li a:hover {
       text-decoration: none;
       color: rgb(56, 156, 56);
-      transition: all 500ms ease-out;
+      transition: all 500ms ease-out !important;
 }
 
 /* =====================================================================================================================
@@ -89,14 +90,16 @@ section {
       text-align: center;
 }
 
-.about {
-      height: 100%;
+.top {
       background-color: rgb(245,245,245);
+}
+
+.about {
 }
 
 .about .info {
       float: left;
-      width: 33.3%; !important;
+      width: 33.3% !important;
       margin-bottom: 80px;
       padding: 0 8px;
 }
@@ -116,7 +119,7 @@ section {
 
 .team .column {
       float: left;
-      width: 33.3%; !important;
+      width: 33.3% !important;
       margin-bottom: 80px;
       padding: 0 8px;
 }
@@ -135,6 +138,36 @@ section h1 {
       font-weight: bolder;
       font-size: 28px;
       font-family: "Nirmala UI" !important;
+}
+
+.pub {
+      display: inline-block;
+      width: 50%;
+}
+
+.pub > div > h2{
+      display: inline-block;
+      text-align: left !important;
+      background-color: rgb(245,255,245);
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.pub > div > ul{
+      text-align: left !important;
+}
+
+
+.pub > div > ul > li::before{
+      content: ">";
+      border-color: transparent #111;
+      border-style: solid;
+      border-width: 0.35em 0 0.35em 0.45em;
+      display: block;
+      height: 0;
+      width: 0;
+      left: -1em;
+      top: 0.9em;
+      position: relative;
 }
 
 /* =====================================================================================================================
