@@ -1,6 +1,0 @@
-<p>Office</p>
-<h4>Room 1023, 10th Floor,</h4>
-<h4>The Jockey Club Tower,</h4>
-<h4>Centennial Campus,</h4>
-<h4>The University of Hong Kong,</h4>
-<h4>Pokfulam Road, Hong Kong</h4>
