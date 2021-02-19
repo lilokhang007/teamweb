@@ -27,13 +27,30 @@
       <link rel="stylesheet" href="https://cdn.rawgit.com/daneden/animate.css/v3.1.0/animate.min.css">
       <script src="https://cdn.rawgit.com/matthieua/WOW/1.0.1/dist/wow.min.js"></script>
       <main>
+            <!-- NAVIGATION BAR SECTION (STARTS) -->
+            <nav class="nav">
+                  <ul id="menu">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About us</a></li>
+                        <li><a href="#services">Publications</a></li>
+                        <li><a href="#team">Our team</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                  </ul>
+
+                  <div id="wname">
+                        <div class="span">The University of Hong Kong | Department of Geography | Dr. Lam's Research Group Webpage</div>
+                  </div>
+
+            </nav>
+            <!-- NAVIGATION BAR SECTION (ENDS) -->
+
            {% block content %}{% endblock content %}
 
-            <!--------------- footer starts here --------------->
+            <!-- FOOTER SECTION (STARTS) -->
             <div class="footer">
                   <p>© 2021 University of Hong Kong, Department of Geography. All Rights Reserved.</p>
             </div>
-            <!--------------- footer ends here --------------->
+            <!-- FOOTER SECTION (ENDS) -->
 
       </main>
 </html>
