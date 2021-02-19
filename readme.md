@@ -1,0 +1,2 @@
+- Install required packages: pip -r install requirement.txt
+- Build docs: python build.py
