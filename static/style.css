@@ -87,12 +87,23 @@ html, body {
 ===================================================================================================================== */
 
 section {
-      padding: 140px 0;
+      padding: 20px 0;
       text-align: center;
 }
 
 .top {
+      padding: 100px 0;
       background-color: rgb(245,245,245);
+}
+
+.top .about {
+      width: 80%;
+      margin: auto;
+}
+
+.top .about > p {
+      font-size: 20px;
+      text-align: left;
 }
 
 .contact {
@@ -121,15 +132,27 @@ section {
 .research th, td {
       width: 320px;
       height: 320px;
-      background-color: rgb(225,225,205);
+      background-color: rgb(205,205,165);
       padding: 10px;
 }
 
+.research td > .i {
+      width: 280px;
+      height: 280px;
+      margin: auto;
+      background-color: rgb(245,245,225) !important;
+}
+
+.research p {
+      background-color: rgb(225,225,225);
+}
+
 .research td:hover {
-      background-color: rgb(255,255,235);
+      background-color: rgb(245,245,185);
 }
 
 .cowin {
+      padding-bottom: 100px;
       background-color: rgb(245,235,225);
 }
 
