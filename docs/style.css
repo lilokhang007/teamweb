@@ -107,21 +107,40 @@ section {
 }
 
 .contact {
-
+      padding: 100px 0;
 }
 
 .contact .info {
-      float: left;
-      width: 33.3% !important;
       margin-bottom: 80px;
       padding: 0 8px;
+}
+
+.contact .info table {
+      width: 60%;
+      margin-left: auto;
+      margin-right: auto;
+      border-spacing: 10px;
+      border-collapse: separate;
+}
+
+.contact .info table tr th {
+      text-align: left;
+      font-weight: strong;
+      background-color: rgb(215,215,165) !important;
+      padding: 10px;
+}
+
+.contact .info table tr td {
+      text-align: left;
+      background-color: rgb(235,235,185) !important;
+      padding: 10px;
 }
 
 .research {
       background-color: rgb(245,240,235);
 }
 
-.research table {
+.research > table {
       width: 50%;
       margin-left: auto;
       margin-right: auto;
@@ -129,31 +148,38 @@ section {
       border-collapse: separate;
 }
 
-.research th, td {
+.research td {
       width: 320px;
       height: 320px;
       background-color: rgb(205,205,165);
       padding: 10px;
 }
 
-.research td > .i {
+.research .i {
       width: 280px;
       height: 280px;
       margin: auto;
       background-color: rgb(245,245,225) !important;
 }
 
-.research p {
+.research > table p {
       background-color: rgb(225,225,225);
 }
 
-.research td:hover {
+.research > table tr td:hover {
       background-color: rgb(245,245,185);
 }
 
 .cowin {
       padding-bottom: 100px;
       background-color: rgb(245,235,225);
+}
+
+.cowin .embed{
+      margin: auto;
+      height: 600px;
+      width: 900px;
+      background-color: rgb(255,255,255);
 }
 
 .team img {
@@ -185,6 +211,7 @@ section h1 {
 }
 
 .pub {
+      padding: 100px 0;
       width: 50%;
       margin-left: auto;
       margin-right: auto;
@@ -193,7 +220,9 @@ section h1 {
 .pub > div > h2{
       display: inline-block;
       text-align: left !important;
+      font-weight: bolder;
       background-color: rgb(245,255,245);
+      padding: 5px 5px;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
