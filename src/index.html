@@ -1,7 +1,6 @@
 {% extends "_main.html" %}
 {% block content %}
 <body>
-      
       <a name="home"></a>
       <div class="wrapper">
             <section class="top">
@@ -16,44 +15,33 @@
 
             <section class="research">
                   <h1>Research Highlights</h1>
-                  <table>
-                        <tr>
-                              <td>
-                                    <div class="i"></div>
-                                    <p>Research 1</p>
-                              </td>
-                              <td>
-                                    <div class="i"></div>
-                                    <p>Research 2</p>
-                              </td>
-                              <td>
-                                    <div class="i"></div>
-                                    <p>Research 3</p>
-                              </td>
-                        </tr>
-                        <tr>
-                              <td>
-                                    <div class="i"></div>
-                                    <p>Research 4</p>
-                              </td>
-                              <td>
-                                    <div class="i"></div>
-                                    <p>Research 5</p>
-                              </td>
-                              <td>
-                                    <div class="i"></div>
-                                    <p>Research 6</p>
-                              </td>
-                        </tr>
-                  </table>
+                  <div class="flex-container">
+                        <div class="i">
+                              <div class="ph"></div>
+                              <p>Research 1</p>
+                        </div>
+                        <div class="i">
+                              <div class="ph"></div>
+                              <p>Research 2</p>
+                        </div>
+                        <div class="i">
+                              <div class="ph"></div>
+                              <p>Research 3</p>
+                        </div>
+                        <div class="i">
+                              <div class="ph"></div>
+                              <p>Research 4</p>
+                        </div>
+                  </div>
             </section>
 
             <section class="cowin">
                   <h1>CoWIN</h1>
                   <div class="embed">
-                        <iframe height=600 width=900 src="http://cowin.hku.hk/"></iframe>
+                        <iframe height="80%" width="90%" src="http://cowin.hku.hk/"></iframe>
                   </div>
             </section>
+
       </div>
 </body>
 {% endblock content %}

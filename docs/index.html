@@ -27,8 +27,17 @@
       <link rel="stylesheet" href="https://cdn.rawgit.com/daneden/animate.css/v3.1.0/animate.min.css">
       <script src="https://cdn.rawgit.com/matthieua/WOW/1.0.1/dist/wow.min.js"></script>
       <main>
+            <!--
+            <div id="wname">
+                  <div class="span">
+                        <p>Dr. Lam's Research Group Webpage</p>
+                  </div>
+            </div>
+            -->
+
             <!-- NAVIGATION BAR SECTION (STARTS) -->
-            <nav class="nav", id="nav">
+            <div class="nav" id="nav">
+
                   <ul id="menu">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="contact.html">Contact</a></li>
@@ -38,18 +47,11 @@
                         <li><a href="https://www.geog.hku.hk/">Department Page</a></li>
                   </ul>
 
-                  <div id="wname">
-                        <div class="span">
-                              <p>Dr. Lam's Research Group Webpage</p>
-                        </div>
-                  </div>
-
-            </nav>
+            </div>
             <!-- NAVIGATION BAR SECTION (ENDS) -->
 
            
 <body>
-      
       <a name="home"></a>
       <div class="wrapper">
             <section class="top">
@@ -64,44 +66,33 @@
 
             <section class="research">
                   <h1>Research Highlights</h1>
-                  <table>
-                        <tr>
-                              <td>
-                                    <div class="i"></div>
-                                    <p>Research 1</p>
-                              </td>
-                              <td>
-                                    <div class="i"></div>
-                                    <p>Research 2</p>
-                              </td>
-                              <td>
-                                    <div class="i"></div>
-                                    <p>Research 3</p>
-                              </td>
-                        </tr>
-                        <tr>
-                              <td>
-                                    <div class="i"></div>
-                                    <p>Research 4</p>
-                              </td>
-                              <td>
-                                    <div class="i"></div>
-                                    <p>Research 5</p>
-                              </td>
-                              <td>
-                                    <div class="i"></div>
-                                    <p>Research 6</p>
-                              </td>
-                        </tr>
-                  </table>
+                  <div class="flex-container">
+                        <div class="i">
+                              <div class="ph"></div>
+                              <p>Research 1</p>
+                        </div>
+                        <div class="i">
+                              <div class="ph"></div>
+                              <p>Research 2</p>
+                        </div>
+                        <div class="i">
+                              <div class="ph"></div>
+                              <p>Research 3</p>
+                        </div>
+                        <div class="i">
+                              <div class="ph"></div>
+                              <p>Research 4</p>
+                        </div>
+                  </div>
             </section>
 
             <section class="cowin">
                   <h1>CoWIN</h1>
                   <div class="embed">
-                        <iframe height=600 width=900 src="http://cowin.hku.hk/"></iframe>
+                        <iframe height="80%" width="90%" src="http://cowin.hku.hk/"></iframe>
                   </div>
             </section>
+
       </div>
 </body>
 

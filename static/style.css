@@ -11,57 +11,30 @@ html, body {
 }
 
 /* =====================================================================================================================
-    Header
-===================================================================================================================== */
-
-.header {
-      position: absolute;
-      top: 50%;
-      left: 45%;
-      transform: translate(-50%, -50%);
-}
-
-.header h1 {
-      color: #d3ae87;
-      font-size: 80px !important;
-}
-
-/* =====================================================================================================================
     Navigation bar
 ===================================================================================================================== */
 
-#nav {
-      width: 100%;
+.nav {
       height: 80px;
-      position: fixed;
+      position: relative;
       transition: 0.4s;
       z-index: 2;
-      background-image: linear-gradient(rgba(194,238,194,255), rgba(144,238,144,0))
 }
 
-#nav:hover {
-      background-image: linear-gradient(rgba(194,238,194,255), rgba(144,238,144,255)) !important;
+.nav #menu {
+      background-image: linear-gradient(rgba(194,238,194,255), rgba(144,238,144,0));
+      width: 100%;
+      display: flex;
+      float: left;
+}
+
+.nav #menu:hover {
+      background-image: linear-gradient(rgba(194,238,194,255), rgba(144,238,144,255));
       transition: background-image 500ms ease-out !important;
 }
 
-#nav #wname {
-      padding-left:40px;
-      display: inline-block;
-      font-weight: strong !important;
-      font-size: 20px;
-      line-height: 80px;
-      position: relative;
-      transition: all 500ms ease-out;
-}
-
-#nav #menu {
-      float: left;
-      right: 40px;
-      position: fixed;
-}
-
-#nav #menu li {
-      padding-left: 40px;
+.nav #menu li {
+      margin-left: 40px;
       display: inline-block;
       font-weight: lighter !important;
       font-size: 20px;
@@ -70,25 +43,49 @@ html, body {
       transition: all 500ms ease-out !important;
 }
 
-#nav #menu li a {
+.nav #menu li a {
       font-family: "Calibri" !important;
       color: rgb(6, 56, 6);
       transition: all 500ms ease-out !important;
 }
 
-#nav #menu li a:hover {
+.nav #menu li a:hover {
       text-decoration: none;
-      color: rgb(56, 156, 56);
+      color: rgb(86, 186, 86);
       transition: all 500ms ease-out !important;
 }
 
+@media screen and (max-width: 1000px) {
+      .nav {
+            height: 480px !important;
+            position: relative !important;
+      }
+
+      .nav #menu {
+            width: 100% !important;
+            flex-direction: column;
+      }
+}
 /* =====================================================================================================================
     Sections
 ===================================================================================================================== */
 
+.wrapper {
+      width: 100% !important;
+      position: relative !important;
+      display: inline-block !important;
+}
+
 section {
       padding: 20px 0;
       text-align: center;
+}
+
+section h1 {
+      color: rgb(100,67,33);
+      font-weight: bolder;
+      font-size: 28px;
+      font-family: "Nirmala UI" !important;
 }
 
 .top {
@@ -138,6 +135,8 @@ section {
       margin-right: auto;
       border-spacing: 10px;
       border-collapse: separate;
+      display: flex;
+      flex-wrap: wrap;
 }
 
 .contact .info table tr th {
@@ -155,47 +154,51 @@ section {
 
 .research {
       background-color: rgb(245,240,235);
+      overflow-x: auto;
 }
 
-.research > table {
-      width: 50%;
+.research .flex-container {
+      width: 80%;
       margin-left: auto;
       margin-right: auto;
-      border-spacing: 10px;
-      border-collapse: separate;
+      display: flex;
+      flex-wrap: wrap;
+      background-color: rgb(205,205,185) !important;
 }
 
-.research td {
-      width: 320px;
-      height: 320px;
-      background-color: rgb(205,205,165);
-      padding: 10px;
-}
-
-.research .i {
+.research .flex-container > div {
       width: 280px;
       height: 280px;
       margin: auto;
-      background-color: rgb(245,245,225) !important;
+      padding: 20px 20px;
 }
 
-.research > table p {
+.research .flex-container > div > p {
       background-color: rgb(225,225,225);
 }
 
-.research > table tr td:hover {
-      background-color: rgb(245,245,185);
+.research .flex-container > div > div {
+      width: 100%;
+      height: 90%;
+      margin: auto;
+      background-color: rgb(245,245,225) ;
+
+}
+
+.research .flex-container > div > p:hover {
+      background-color: rgb(245,245,185) !important;
 }
 
 .cowin {
+      overflow-x: auto;
       padding-bottom: 100px;
       background-color: rgb(245,235,225);
 }
 
 .cowin .embed{
       margin: auto;
-      height: 600px;
-      width: 900px;
+      height: 80%;
+      width: 90%;
       background-color: rgb(255,255,255);
 }
 
@@ -223,13 +226,6 @@ section {
 
 .team .card p {
       text-align: left;
-      font-family: "Nirmala UI" !important;
-}
-
-section h1 {
-      color: rgb(100,67,33);
-      font-weight: bolder;
-      font-size: 28px;
       font-family: "Nirmala UI" !important;
 }
 
