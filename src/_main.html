@@ -20,9 +20,6 @@
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-      <!-- icons -->
-      <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
-
       <!-- for on scroll animations -->
       <link rel="stylesheet" href="https://cdn.rawgit.com/daneden/animate.css/v3.1.0/animate.min.css">
       <script src="https://cdn.rawgit.com/matthieua/WOW/1.0.1/dist/wow.min.js"></script>
@@ -37,11 +34,27 @@
 
             <!-- NAVIGATION BAR SECTION (STARTS) -->
             <div class="nav" id="nav">
+                  {% macro menuitem(name, url) %}
+                  {% if page == name %}
+                        <a class='active' href="{{url|safe}}">
+                  {% else %}
+                        <a href="{{url|safe}}">
+                  {% endif %}
+
+                  <i class="fa fa-caret-down"></i>
+                  {{ caller() }}
+
+                  {% if page == name %}
+                        </a>
+                  {% else %}
+                        </a>
+                  {% endif %}
+                  {% endmacro %}
 
                   <ul id="menu">
-                        <li><a href="index.html">Home</a></li>
+                        <li>{% call menuitem('index', 'index.html') %}Home{% endcall %}</li>
                         <li class="dropdown">
-                              <a href="about.html">About</a>
+                              {% call menuitem('about', 'about.html') %}About{% endcall %}
                               <div class="dropdown-content">
                                     <ul>
                                           <li><a href="vision.html">Vision and Mission</a></li>
@@ -51,7 +64,7 @@
                               </div>
                         </li>
                         <li class="dropdown">
-                              <a href="research.html">Research</a>
+                              {% call menuitem('research', 'research.html') %}Research{% endcall %}
                               <div class="dropdown-content">
                                     <ul>
                                           <li><a href="research.html">Research Themes</a></li>
@@ -59,8 +72,8 @@
                                     </ul>
                               </div>
                         </li>
-                        <li><a href="education.html">Education</a></li>
-                        <li><a href="join.html">Join us</a></li>
+                        <li>{% call menuitem('education', 'education.html') %}Education{% endcall %}</li>
+                        <li>{% call menuitem('join', 'join.html') %}Join Us{% endcall %}</li>
                   </ul>
 
             </div>
@@ -70,7 +83,7 @@
 
             <!-- FOOTER SECTION (STARTS) -->
             <div class="footer">
-                  <p>© 2021 University of Hong Kong, Department of Geography. All Rights Reserved.</p>
+                  <p>© 2021 Department of Geography, University of Hong Kong. All Rights Reserved.</p>
             </div>
             <!-- FOOTER SECTION (ENDS) -->
 
