@@ -27,21 +27,43 @@
       <link rel="stylesheet" href="https://cdn.rawgit.com/daneden/animate.css/v3.1.0/animate.min.css">
       <script src="https://cdn.rawgit.com/matthieua/WOW/1.0.1/dist/wow.min.js"></script>
       <main>
+            <!--
+            <div id="wname">
+                  <div class="span">
+                        <p>Dr. Lam's Research Group Webpage</p>
+                  </div>
+            </div>
+            -->
+
             <!-- NAVIGATION BAR SECTION (STARTS) -->
-            <nav class="nav", id="nav">
+            <div class="nav" id="nav">
+
                   <ul id="menu">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About us</a></li>
-                        <li><a href="pub.html">Publications</a></li>
-                        <li><a href="team.html">Our team</a></li>
-                        <li><a href="https://cowin.hku.hk/">CoWIN</a></li>
+                        <li class="dropdown">
+                              <a href="about.html">About</a>
+                              <div class="dropdown-content">
+                                    <ul>
+                                          <li><a href="vision.html">Vision and Mission</a></li>
+                                          <li><a href="contact.html">Contact</a></li>
+                                          <li><a href="team.html">Team</a></li>
+                                    </ul>
+                              </div>
+                        </li>
+                        <li class="dropdown">
+                              <a href="research.html">Research</a>
+                              <div class="dropdown-content">
+                                    <ul>
+                                          <li><a href="research.html">Research Themes</a></li>
+                                          <li><a href="pub.html">Publications</a></li>
+                                    </ul>
+                              </div>
+                        </li>
+                        <li><a href="education.html">Education</a></li>
+                        <li><a href="join.html">Join us</a></li>
                   </ul>
 
-                  <div id="wname">
-                        <div class="span">The University of Hong Kong | Department of Geography | Dr. Lam's Research Group Webpage</div>
-                  </div>
-
-            </nav>
+            </div>
             <!-- NAVIGATION BAR SECTION (ENDS) -->
 
            
@@ -49,21 +71,13 @@
 
       <a name="home"></a>
       <div class="wrapper">
-            <section class="about">
-                  <h1>About us ...</h1>
-                  <div class = "info">
-                        <h2>Office</h2>
-                        <p>Room 1030, 10th Floor,</p>
-                        <p>The Jockey Club Tower,</p>
-                        <p>Centennial Campus,</p>
-                        <p>The University of Hong Kong,</p>
-                        <p>Pokfulam Road, Hong Kong</p>
-
-                        <h2>Office Email:</h2>
-                        <p>yunlam@hku.hk</p>
-
-                        <h2>Office Phone:</h2>
-                        <p>391 77102</p>
+            <section class="top">
+                  <h1>About Us</h1>
+                  <div class="about">
+                        <p> Welcome to the Dr. Lam's Research Group at the Department of Geography.</p>
+                        <p> Our research aims to.</p>
+                        <p> Led by Dr. Nicky Lam, our group takes an innovative approach in finding practical solutions
+                              to complex problems related to meteorology.</p>
                   </div>
             </section>
       </div>

@@ -159,8 +159,6 @@ section h1 {
       margin-right: auto;
       border-spacing: 10px;
       border-collapse: separate;
-      display: flex;
-      flex-wrap: wrap;
 }
 
 .contact .info table tr th {
