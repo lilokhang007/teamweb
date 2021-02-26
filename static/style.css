@@ -33,7 +33,7 @@ html, body {
       transition: background-image 500ms ease-out !important;
 }
 
-.nav #menu li {
+.nav #menu > li {
       margin-left: 40px;
       display: inline-block;
       font-weight: lighter !important;
@@ -43,16 +43,40 @@ html, body {
       transition: all 500ms ease-out !important;
 }
 
-.nav #menu li a {
+.nav #menu > li a {
       font-family: "Calibri" !important;
       color: rgb(6, 56, 6);
       transition: all 500ms ease-out !important;
 }
 
-.nav #menu li a:hover {
+.nav #menu > li a:hover {
       text-decoration: none;
       color: rgb(86, 186, 86);
       transition: all 500ms ease-out !important;
+}
+
+.dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 200px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+}
+
+.dropdown-content ul li {
+      margin-left: 20px;
+      display: block;
+      font-weight: lighter !important;
+      font-size: 16px;
+      line-height: 30px;
+      position: relative;
+      transition: all 500ms ease-out !important;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+      display: block;
 }
 
 @media screen and (max-width: 1000px) {
@@ -190,6 +214,7 @@ section h1 {
 }
 
 .cowin {
+      height: 500px;
       overflow-x: auto;
       padding-bottom: 100px;
       background-color: rgb(245,235,225);
@@ -197,8 +222,8 @@ section h1 {
 
 .cowin .embed{
       margin: auto;
-      height: 80%;
-      width: 90%;
+      height: 95%;
+      width: 95%;
       background-color: rgb(255,255,255);
 }
 
