@@ -8,12 +8,3 @@ window.onscroll = function() {
         document.getElementById("nav").style.top = "0";
       }
 }
-
-$(window).load(function () {
-    var ANIMATE_DURATION = 300;
-    var WAIT_DURATION = 5000;
-    $('body').delay(WAIT_DURATION) //wait 5 seconds
-        .animate({
-            'scrollTop': $('#second').offset().top
-        }, ANIMATE_DURATION);
-});
