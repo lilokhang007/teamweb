@@ -7,16 +7,16 @@
       <title>Dr. Lam, Yun Fat's Research Group</title>
 
       <!-- stylesheet -->
-      <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="/static/style.css">
 
-      <!-- google fonts -->
+      <!-- google fonts --> 
       <link href="https://fonts.googleapis.com/css?family=Darker+Grotesque:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
       <!-- jquery -->
       <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
       <script src="main.js"></script>
-
-      <!-- bootstrap -->
+ 
+      <!-- bootstrap --> 
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
@@ -52,28 +52,28 @@
                   {% endmacro %}
 
                   <ul id="menu">
-                        <li>{% call menuitem('index', 'index.html') %}Home{% endcall %}</li>
+                        <li>{% call menuitem('index', 'index') %}Home{% endcall %}</li>
                         <li class="dropdown">
-                              {% call menuitem('about', 'abt.html') %}About{% endcall %}
+                              {% call menuitem('about', 'about') %}About{% endcall %}
                               <div class="dropdown-content">
                                     <ul>
-                                          <li><a href="vision.html">Vision and Mission</a></li>
-                                          <li><a href="contact.html">Contact</a></li>
-                                          <li><a href="team.html">Team</a></li>
+                                          <li><a href="vision">Vision and Mission</a></li>
+                                          <li><a href="contact">Contact</a></li>
+                                          <li><a href="team">Team</a></li>
                                     </ul>
                               </div>
                         </li>
                         <li class="dropdown">
-                              {% call menuitem('research', 'research.html') %}Research{% endcall %}
+                              {% call menuitem('research', 'research') %}Research{% endcall %}
                               <div class="dropdown-content">
                                     <ul>
-                                          <li><a href="research.html">Research Themes</a></li>
-                                          <li><a href="pub.html">Publications</a></li>
+                                          <li><a href="research">Research Themes</a></li>
+                                          <li><a href="pub">Publications</a></li>
                                     </ul>
                               </div>
                         </li>
-                        <li>{% call menuitem('education', 'education.html') %}Education{% endcall %}</li>
-                        <li>{% call menuitem('join', 'join.html') %}Join Us{% endcall %}</li>
+                        <li>{% call menuitem('education', 'education') %}Education{% endcall %}</li>
+                        <li>{% call menuitem('join', 'join') %}Join Us{% endcall %}</li>
                   </ul>
 
             </div>

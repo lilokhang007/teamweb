@@ -1,17 +1,13 @@
+from __main__ import app
 from flask import flash, url_for, send_from_directory, jsonify, redirect, request, render_template
 from flask_admin import Admin, expose
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, login_user, logout_user, login_required
-from app import create_app
 from utils.forms import LoginForm
 from utils.log import LoginMenuLink, LogoutMenuLink
 from utils.views import AdminView, BlogView
+from utils.models import db, Admins, Blogs                 
 from path import FILE_UPLOAD_DIR
-
-app = create_app()
-
-from utils.models import db, Admins, Blogs 
-login_manager = LoginManager(app) 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -40,21 +36,21 @@ def logout():
     logout_user()
     return redirect('/admin/')
                         
-@login_manager.user_loader 
-def load_user(user):   
-    return Admins.query.get(user) 
-                
 # Showing static files in static
 @app.route('/static/<name>')
-def static_file(name):
+def static_file(name): 
     return send_from_directory(FILE_UPLOAD_DIR, name)  
 
-if __name__ == '__main__':
-    admin = Admin(app, name='Team Webpage Admin Page', template_mode='bootstrap3') 
+login_manager = LoginManager(app) 
+@login_manager.user_loader 
+def load_user(user):   
+    return Admins.query.get(user)
+
+def create_admin():
+    admin = Admin(name='Team Webpage Admin Page', template_mode='bootstrap3') 
     # administrative views
     admin.add_view(AdminView(Admins, db.session))
     admin.add_view(BlogView(Blogs, db.session))  
     admin.add_link(LogoutMenuLink(name='Logout', category='', url="/logout"))
     admin.add_link(LoginMenuLink(name='Login', category='', url="/login"))
-    
-    app.run(host='0.0.0.0',port='8002') 
+    return admin
