@@ -5,6 +5,7 @@ from wtforms.utils import unset_value
 from flask_admin.helpers import get_url
 from flask_admin.form.upload import ImageUploadField
 from flask_admin._compat import string_types, urljoin
+from path import FILE_UPLOAD_DIR
 
 class MultipleImageUploadInput(object):
     empty_template = "<input %(file)s multiple>"
@@ -28,9 +29,10 @@ class MultipleImageUploadInput(object):
 
             attributes = self.get_attributes(field)
             args["images"] = "&emsp;".join(["<img src='{}' /><input type='checkbox' name='{}-delete'>Delete</input>"
-                                            .format(src, filename) for src, filename in attributes])
-
-            template = self.data_template
+                                            .format('../../.' + FILE_UPLOAD_DIR + filename, filename) for src, filename in attributes])
+            print(args["images"]) 
+             
+            template = self.data_template  
 
         else:
             template = self.empty_template

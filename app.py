@@ -1,14 +1,18 @@
 from flask import Flask, render_template, send_from_directory 
+from path import FILE_UPLOAD_DIR
+import os 
 
 def create_app():
     
-    app = Flask(__name__, static_url_path="/static", static_folder='/static/')
-    
+    app = Flask(__name__)
+    print(os.path.abspath(app._static_folder))
+     
     # set optional bootswatch theme   
     app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://alan:lilokhang@localhost:5432/teamweb'
     app.config['SECRET_KEY'] = 'mySecret'
-  
+    app.config['UPLOAD_FOLDER'] = FILE_UPLOAD_DIR
+    
     return app
 
 def add_admin_page(app = None):
@@ -19,6 +23,10 @@ def add_admin_page(app = None):
 app = create_app()
 add_admin_page(app)
 
+@app.route('/static/<path:path>') 
+def static_files(path): 
+    return send_from_directory('/static', path) 
+   
 @app.route('/index') 
 def index(): 
     return render_template('index.html')
