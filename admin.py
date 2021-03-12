@@ -1,10 +1,11 @@
 from __main__ import app
 from flask import flash, url_for, send_from_directory, jsonify, redirect, request, render_template
 from flask_admin import Admin, expose
+from flask_admin.menu import MenuLink
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, login_user, logout_user, login_required
 from utils.forms import LoginForm
-from utils.log import LoginMenuLink, LogoutMenuLink
+from utils.links import LoginMenuLink, LogoutMenuLink
 from utils.views import AdminView, BlogView
 from utils.models import db, Admins, Blogs                 
 from path import FILE_UPLOAD_DIR
@@ -48,4 +49,5 @@ def create_admin():
     admin.add_view(BlogView(Blogs, db.session))  
     admin.add_link(LogoutMenuLink(name='Logout', category='', url="/logout"))
     admin.add_link(LoginMenuLink(name='Login', category='', url="/login"))
+    admin.add_link(MenuLink(name='Return to the Site', category='', url="/index"))
     return admin

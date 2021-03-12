@@ -1,4 +1,5 @@
-__pycache__
+.git
 .idea
-docs/uploads/
+__pycache__
+static/uploads/
 
