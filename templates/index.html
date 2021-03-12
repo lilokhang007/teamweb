@@ -59,22 +59,17 @@
             <section class="research">
                   <h1>Research Highlights</h1>
                   <div class="flex-container">
-                        <div class="i">
-                              <div class="ph"></div>
-                              <p>Research 1</p>
-                        </div>
-                        <div class="i">
-                              <div class="ph"></div>
-                              <p>Research 2</p>
-                        </div>
-                        <div class="i">
-                              <div class="ph"></div>
-                              <p>Research 3</p>
-                        </div>
-                        <div class="i">
-                              <div class="ph"></div>
-                              <p>Research 4</p>
-                        </div>
+                        {% for blog in blogs %}
+                          <div class="i"> 
+                                <div class="ph" style="justify-content: center align-items: center;">
+                                  <a href='blogs?id={{loop.index}}'> <img src = {{blog.imgs[0]}} width=100 height=100> </img> </a>
+                                </div>
+                                <p>
+                                  <span> {{blog.title}}</span>
+                                  <span style="float:right;">Author: {{blog.author}}</span>
+                                </p>                        
+                          </div>  
+                        {% endfor %}
                   </div>
             </section>
 

@@ -14,7 +14,7 @@
 
       <!-- jquery -->
       <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-      <script src="main.js"></script>
+      <script src="{{ url_for('static', filename='main.js') }}"></script>
  
       <!-- bootstrap --> 
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -83,8 +83,9 @@
 
             <!-- FOOTER SECTION (STARTS) -->
             <div class="footer">
-                  <p>© 2021 Department of Geography, University of Hong Kong. All Rights Reserved.</p>
-            </div>
+                  <span>© 2021 Department of Geography, University of Hong Kong. All Rights Reserved.</span>
+                  <span><a href="admin" style="float:right;">Admin Control Panel</a></span>
+            </div> 
             <!-- FOOTER SECTION (ENDS) -->
 
       </main>

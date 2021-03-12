@@ -35,11 +35,6 @@ def login():
 def logout(): 
     logout_user()
     return redirect('/admin/')
-                        
-# Showing static files in static
-#@app.route('/static/<name>')
-#def static_file(name): 
-#    return send_from_directory(FILE_UPLOAD_DIR, name)  
 
 login_manager = LoginManager(app) 
 @login_manager.user_loader 
