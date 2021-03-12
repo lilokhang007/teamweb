@@ -1,4 +1,5 @@
 from __main__ import app
+from utils.types import ChoiceType
 from flask_login import UserMixin
 from flask_sqlalchemy import SQLAlchemy
 
@@ -12,10 +13,24 @@ class Admins(UserMixin, db.Model):
     def is_authenticated(self):
         return True 
              
-class Blogs(db.Model):
+class Highlights(db.Model):
     id = db.Column(db.Integer, primary_key=True) 
     postdate = db.Column(db.DateTime)
     title = db.Column(db.Text)
     content = db.Column(db.Text) 
     imgs = db.Column(db.String)
     author = db.Column(db.ForeignKey(Admins.username, ondelete='CASCADE', onupdate='CASCADE'), nullable=False)  
+        
+PageTypes = [
+    ("Vision", "Vision"),
+    ("Mission", "Mission"),
+    ("About Us", "About Us"),
+]
+
+class Pages(db.Model):
+    id = db.Column(db.Integer, primary_key=True) 
+    type = db.Column(
+        ChoiceType(dict(PageTypes)), nullable=False 
+    )
+    content = db.Column(db.Text) 
+    imgs = db.Column(db.String) 

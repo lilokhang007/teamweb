@@ -29,7 +29,7 @@ app = create_app()
 if __name__ == '__main__':
     add_admin_page(app)
     
-    from utils.models import Blogs
+    from utils.models import Highlights, Pages
     def tidy_blog(blog):
         blog['imgs'] = [FILE_UPLOAD_DIR + img for img in eval(blog['imgs'])] # set proper blog image path
         blog['content'] = blog['content'].replace("\n", Markup("<br></br>")) # set html tag
@@ -41,7 +41,7 @@ if __name__ == '__main__':
        
     @app.route('/index')  
     def index(): 
-        results = Blogs.query.all()
+        results = Highlights.query.all()
         blogs = [result.__dict__ for result in results] # convert to dict list
         for blog in blogs:
             blog = tidy_blog(blog)
@@ -50,7 +50,7 @@ if __name__ == '__main__':
     @app.route('/blogs') 
     def blog():   
         bid = request.args.get('id', default = 1, type = int)
-        blog = Blogs.query.get(bid)
+        blog = Highlights.query.get(bid)
         if blog is not None:       
             blog = tidy_blog(blog.__dict__)   
         else:
@@ -58,21 +58,30 @@ if __name__ == '__main__':
         return render_template('blog.html', blog=blog)  
      
     @app.route('/about') 
-    def about():  
-        return render_template('about.html')
+    def about(): 
+        about = Pages.query.filter_by(type='About Us').first()
+        if about is not None:
+          about = tidy_blog(about.__dict__) 
+        return render_template('about.html', about=about)
         
-    @app.route('/vision') 
+    @app.route('/vision')  
     def vision(): 
-        return render_template('vision.html')
-        
+        vision = Pages.query.filter_by(type='Vision').first()
+        if vision is not None:
+          vision = tidy_blog(vision.__dict__)
+        mission = Posts.query.filter_by(type='Mission').first()
+        if mission is not None:
+          mission = tidy_blog(mission.__dict__)
+        return render_template('vision.html', vision=vision, mission=mission)
+         
     @app.route('/contact') 
     def contact(): 
         return render_template('contact.html')
-        
+         
     @app.route('/team') 
     def team(): 
         return render_template('team.html')
-        
+         
     @app.route('/research') 
     def research(): 
         return render_template('research.html')
@@ -86,7 +95,7 @@ if __name__ == '__main__':
         return render_template('education.html')
     
     @app.route('/join')  
-    def join():  
+    def join():   
         return render_template('join.html')
                    
     app.run(host=args.host,port=args.port)       

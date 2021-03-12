@@ -6,11 +6,13 @@
       <a name="home"></a>
       <div class="wrapper">
             <section class="top">
+                <div class="about">
                   <h1>{{blog.title}}</h1>
                   {% for img in blog.imgs %}
                   <img src = {{img}} width=100 height=100> </img>
                   {% endfor %}
                   <p>{{blog.content|safe}}</p> 
+                </div>
             </section>
       </div>
 </body>

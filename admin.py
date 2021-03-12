@@ -6,12 +6,12 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, login_user, logout_user, login_required
 from utils.forms import LoginForm
 from utils.links import LoginMenuLink, LogoutMenuLink
-from utils.views import AdminView, BlogView
-from utils.models import db, Admins, Blogs                 
-from path import FILE_UPLOAD_DIR
+from utils.views import AdminView, HighlightView, PageView 
+from utils.models import db, Admins, Highlights, Pages             
+from path import FILE_UPLOAD_DIR 
 
 @app.route('/login', methods=['GET', 'POST'])
-def login():
+def login(): 
     form = LoginForm()
     
     if form.validate_on_submit():
@@ -46,7 +46,8 @@ def create_admin():
     admin = Admin(name='Team Webpage Admin Page', template_mode='bootstrap3') 
     # administrative views
     admin.add_view(AdminView(Admins, db.session))
-    admin.add_view(BlogView(Blogs, db.session))  
+    admin.add_view(HighlightView(Highlights, db.session))  
+    admin.add_view(PageView(Pages, db.session))
     admin.add_link(LogoutMenuLink(name='Logout', category='', url="/logout"))
     admin.add_link(LoginMenuLink(name='Login', category='', url="/login"))
     admin.add_link(MenuLink(name='Return to the Site', category='', url="/index"))
