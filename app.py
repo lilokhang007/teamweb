@@ -1,12 +1,12 @@
-from config import SQLALCHEMY_DATABASE_URI, FLASK_SECRET_KEY
+from config import APP_HOST, APP_PORT, SQLALCHEMY_DATABASE_URI, FLASK_SECRET_KEY
 from flask import Flask, request, render_template, send_from_directory, Markup
 from path import FILE_UPLOAD_DIR
 import os 
 import argparse
 
 parser = argparse.ArgumentParser(description='Launch the Flask Application for the Team Web.')
-parser.add_argument('-host', default='0.0.0.0', help='hostname')
-parser.add_argument('-port', default='8002', help='port')
+parser.add_argument('-host', default=APP_HOST, help='hostname')
+parser.add_argument('-port', default=APP_PORT, help='port')
 args = parser.parse_args()
 
 def create_app():  
