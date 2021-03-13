@@ -1,4 +1,5 @@
 from flask import url_for, redirect
+from flask_admin.form.upload import ImageUploadField
 from flask_admin.contrib.sqla import ModelView
 from flask_login.utils import current_user
 from wtforms.fields import TextField, DateTimeField, SelectField
@@ -40,6 +41,17 @@ class PageView(AdminView):
             base_path = FILE_UPLOAD_DIR,  
             thumbnail_size=(100, 100, True),
             namegen=prefix_name, 
+        )
+    }    
+
+class MemberView(AdminView):
+    column_exclude_list = ['selfie',] 
+    form_extra_fields = { 
+        'selfie': ImageUploadField(
+            'Selfie Image',
+            base_path = FILE_UPLOAD_DIR,  
+            thumbnail_size=(100, 100, True),
+            namegen=prefix_name,  
         )
     }    
     
