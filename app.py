@@ -1,3 +1,4 @@
+from config import SQLALCHEMY_DATABASE_URI, FLASK_SECRET_KEY
 from flask import Flask, request, render_template, send_from_directory, Markup
 from path import FILE_UPLOAD_DIR
 import os 
@@ -14,8 +15,8 @@ def create_app():
      
     # set optional bootswatch theme   
     app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://alan:lilokhang@localhost:5432/teamweb'
-    app.config['SECRET_KEY'] = 'mySecret'
+    app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
+    app.config['SECRET_KEY'] = FLASK_SECRET_KEY
     app.config['UPLOAD_FOLDER'] = FILE_UPLOAD_DIR
     
     return app
@@ -88,7 +89,7 @@ if __name__ == '__main__':
         
     @app.route('/pub') 
     def pub():  
-        return render_template('pub.html')
+        return render_template('pub.html') 
     
     @app.route('/education') 
     def education():  

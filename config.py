@@ -1,8 +1,8 @@
-BASE_URL = 'https://175.159.162.12:8002/'
+# DATABASE
+DB_USER = 'alan'
+DB_PW = 'lilokhang'
+DB_HOST = 'localhost'
+DB = 'teamweb'
+SQLALCHEMY_DATABASE_URI = 'postgresql://{}:{}@{}:5432/{}'.format(DB_USER,DB_PW,DB_HOST,DB)
 
-def make_API(base):
-	return {
-		'admin': base + 'admin/'
-    }
-    
-API = make_API(BASE_URL)
+FLASK_SECRET_KEY = 'mySecret'
