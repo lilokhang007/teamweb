@@ -62,9 +62,13 @@
                         {% for blog in blogs %}
                           <div class="i"> 
                                 <div class="ph"> 
+                                  {% if blog.imgs[0] %}
                                   <a href='blogs?id={{blog.id}}'> <img src = {{blog.imgs[0]}} width=200 height=200> </img> </a>
-                                </div>
-                                <p>
+                                  {% else %}
+                                  <a href='blogs?id={{blog.id}}'> {{blog.title}} </a>
+                                  {% endif %}
+                                </div> 
+                                <p> 
                                   <span> {{blog.title}}</span>
                                   <span style="float:right;">Author: {{blog.author}}</span> 
                                 </p>                        

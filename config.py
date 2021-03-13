@@ -15,3 +15,4 @@ FLASK_SECRET_KEY = 'mySecret'
 # Flask Admin Interface Setup
 FLASK_ADMIN_USER = 'admin'
 FLASK_ADMIN_PW = 'aWeb2021!'
+FLASK_ADMIN_SWATCH = 'cerulean'

@@ -8,14 +8,16 @@
             <section class="top">
                 <h1>{{blog.title}}</h1>
                 <div class="about">
-                  {% if blog.imgs is not none %}
+                  {% if blog.imgs %}
                     {% for img in blog.imgs %}
-                    <img src = {{img}} width=100 height=100> </img>
+                    <img src = {{img}} width=100 height=100>
                     {% endfor %}
+                  {% else %} 
+                    <p></p>
                   {% endif %}
                   <p>{{blog.content|safe}}</p> 
                 </div> 
-            </section>
-      </div>
+            </section> 
+      </div> 
 </body>
-{% endblock content %}
+{% endblock content %} 

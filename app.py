@@ -1,4 +1,4 @@
-from config import APP_HOST, APP_PORT, SQLALCHEMY_DATABASE_URI, FLASK_SECRET_KEY
+from config import APP_HOST, APP_PORT, SQLALCHEMY_DATABASE_URI, FLASK_SECRET_KEY, FLASK_ADMIN_SWATCH
 from flask import Flask, request, render_template, send_from_directory, Markup
 from path import FILE_UPLOAD_DIR
 import os 
@@ -13,11 +13,12 @@ def create_app():
     app = Flask(__name__)
      
     # set optional bootswatch theme   
-    app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
-    app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
+    app.config['FLASK_ADMIN_SWATCH'] = FLASK_ADMIN_SWATCH
     app.config['SECRET_KEY'] = FLASK_SECRET_KEY
+    app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['UPLOAD_FOLDER'] = FILE_UPLOAD_DIR
-    
+     
     return app
 
 def add_admin_page(app = None): 
@@ -48,6 +49,7 @@ if __name__ == '__main__':
         blogs = [result.__dict__ for result in results] # convert to dict list
         for blog in blogs:
             blog = tidy_blog(blog)
+        print(blogs)   
         return render_template('index.html', blogs=blogs)
     
     @app.route('/blogs') 
@@ -55,7 +57,7 @@ if __name__ == '__main__':
         bid = request.args.get('id', default = 1, type = int)
         blog = Highlights.query.get(bid)
         if blog is not None:       
-            blog = tidy_blog(blog.__dict__)   
+            blog = tidy_blog(blog.__dict__)
         else:
             return render_template('blog.html', blog=None)      
         return render_template('blog.html', blog=blog)  
