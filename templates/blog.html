@@ -6,13 +6,15 @@
       <a name="home"></a>
       <div class="wrapper">
             <section class="top">
+                <h1>{{blog.title}}</h1>
                 <div class="about">
-                  <h1>{{blog.title}}</h1>
-                  {% for img in blog.imgs %}
-                  <img src = {{img}} width=100 height=100> </img>
-                  {% endfor %}
+                  {% if blog.imgs is not none %}
+                    {% for img in blog.imgs %}
+                    <img src = {{img}} width=100 height=100> </img>
+                    {% endfor %}
+                  {% endif %}
                   <p>{{blog.content|safe}}</p> 
-                </div>
+                </div> 
             </section>
       </div>
 </body>

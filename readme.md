@@ -1,2 +1,3 @@
 - Install required packages: pip -r install requirement.txt
-- Build docs: python build.py
+- Set up models: python3 models.py
+- Run app: python3 app.py

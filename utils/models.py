@@ -30,7 +30,7 @@ PageTypes = [
 class Pages(db.Model):
     id = db.Column(db.Integer, primary_key=True) 
     type = db.Column(
-        ChoiceType(dict(PageTypes)), nullable=False 
+        ChoiceType(dict(PageTypes)), unique=True, nullable=False 
     )
-    content = db.Column(db.Text) 
+    content = db.Column(db.Text)  
     imgs = db.Column(db.String) 
