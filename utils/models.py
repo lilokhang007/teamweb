@@ -7,8 +7,8 @@ db = SQLAlchemy(app)
 
 class Admins(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(10), unique=True, index=True)
-    password = db.Column(db.String(10))
+    username = db.Column(db.String(10), unique=True, nullable=False, index=True)
+    password = db.Column(db.String(10), nullable=False)
 
     def is_authenticated(self):
         return True 
@@ -16,9 +16,9 @@ class Admins(UserMixin, db.Model):
 class Highlights(db.Model):
     id = db.Column(db.Integer, primary_key=True) 
     postdate = db.Column(db.DateTime)
-    title = db.Column(db.Text)
-    content = db.Column(db.Text) 
-    imgs = db.Column(db.String)
+    title = db.Column(db.Text, nullable=False)
+    content = db.Column(db.Text, nullable=False) 
+    imgs = db.Column(db.String, nullable=False)
     author = db.Column(db.ForeignKey(Admins.username, ondelete='CASCADE', onupdate='CASCADE'), nullable=False)  
         
 PageTypes = [
@@ -34,3 +34,12 @@ class Pages(db.Model):
     )
     content = db.Column(db.Text)  
     imgs = db.Column(db.String) 
+    
+class Members(db.Model):
+    id = db.Column(db.Integer, primary_key=True) 
+    name = db.Column(db.Text, nullable=False)
+    selfie = db.Column(db.String)
+    title = db.Column(db.Text)
+    desc = db.Column(db.Text)
+    email = db.Column(db.Text)
+    telno = db.Column(db.Text)    

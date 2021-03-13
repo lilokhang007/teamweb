@@ -1,7 +1,7 @@
 import datetime
 from app import app
 from config import FLASK_ADMIN_USER, FLASK_ADMIN_PW
-from utils.models import db, Admins, Highlights, Pages
+from utils.models import db, Admins, Highlights, Pages, Members
 from sqlalchemy.exc import IntegrityError
 
 def init_to_db():
@@ -14,6 +14,7 @@ def init_to_db():
     Pages(type='Vision', content='This is a testing vision.'),
     Pages(type='Mission', content='This is a testing mission.'),
     Pages(type='About Us', content='This is a testing about us.'),
+    Members(name='Li Lok Hang', title='Research Assistant', desc='I love programming.', email='lilokhang007@gmail.com', telno='12345678')
   ] 
   
   for item in init_items: 

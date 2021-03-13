@@ -30,7 +30,7 @@ app = create_app()
 if __name__ == '__main__':
     add_admin_page(app)
     
-    from utils.models import Highlights, Pages
+    from utils.models import Highlights, Pages, Members
     def tidy_blog(blog):
         # Tidy up the values of the input dictionary
         if blog['imgs'] is not None:
@@ -45,11 +45,11 @@ if __name__ == '__main__':
     @app.route('/')
     @app.route('/index')  
     def index(): 
-        results = Highlights.query.all()
-        blogs = [result.__dict__ for result in results] # convert to dict list
+        blogs = Highlights.query.all()
+        blogs = [result.__dict__ for result in blogs] # convert to dict list
         for blog in blogs:
             blog = tidy_blog(blog)
-        print(blogs)   
+            
         return render_template('index.html', blogs=blogs)
     
     @app.route('/blogs') 
@@ -85,7 +85,9 @@ if __name__ == '__main__':
          
     @app.route('/team') 
     def team(): 
-        return render_template('team.html')
+        members = Members.query.all()
+        members = [result.__dict__ for result in members] # convert to dict list
+        return render_template('team.html', members=members)
          
     @app.route('/research') 
     def research(): 
