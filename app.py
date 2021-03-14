@@ -103,6 +103,9 @@ if __name__ == '__main__':
     
     @app.route('/join')  
     def join():   
-        return render_template('join.html')
+        join = Pages.query.filter_by(type='Join').first()
+        if join is not None:
+            join = tidy_blog(join.__dict__)
+        return render_template('join.html', join=join)
                    
     app.run(host=args.host,port=args.port)       

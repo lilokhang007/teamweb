@@ -25,6 +25,7 @@ PageTypes = [
     ("Vision", "Vision"),
     ("Mission", "Mission"),
     ("About Us", "About Us"),
+    ("Join", "Join"),
 ]
 
 class Pages(db.Model):
