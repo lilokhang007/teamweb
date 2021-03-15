@@ -7,7 +7,7 @@ from flask_login import LoginManager, login_user, logout_user, login_required
 from utils.forms import LoginForm
 from utils.links import LoginMenuLink, LogoutMenuLink
 from utils.views import AdminView, HighlightView, PageView, MemberView
-from utils.models import db, Admins, Highlights, Pages, Members             
+from utils.models import db, Admins, Highlights, Pages, Members, Publications          
 from path import FILE_UPLOAD_DIR 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -49,6 +49,7 @@ def create_admin():
     admin.add_view(HighlightView(Highlights, db.session))  
     admin.add_view(PageView(Pages, db.session))
     admin.add_view(MemberView(Members, db.session))
+    admin.add_view(AdminView(Publications, db.session))
     admin.add_link(LogoutMenuLink(name='Logout', category='', url="/logout"))
     admin.add_link(LoginMenuLink(name='Login', category='', url="/login"))
     admin.add_link(MenuLink(name='Return to the Site', category='', url="/index"))

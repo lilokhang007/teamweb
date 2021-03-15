@@ -26,7 +26,7 @@ PageTypes = [
     ("Mission", "Mission"),
     ("About Us", "About Us"),
     ("Join", "Join"),
-]
+] 
 
 class Pages(db.Model):
     id = db.Column(db.Integer, primary_key=True) 
@@ -44,3 +44,8 @@ class Members(db.Model):
     desc = db.Column(db.Text)
     email = db.Column(db.Text)
     telno = db.Column(db.Text)    
+
+class Publications(db.Model):
+    id = db.Column(db.Integer, primary_key=True) 
+    category = db.Column(db.Text) 
+    citation = db.Column(db.Text, unique=True)  
