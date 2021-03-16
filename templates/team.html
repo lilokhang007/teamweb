@@ -9,11 +9,11 @@
                   {% for member in members %}
                   <div class="column">
                         <div class="card">
-                              {% if member.selfie %}
-                                <img src = {{member.selfie}} width=200 height=200>
+                              {% if member.selfie[0] %} 
+                                <img src = {{member.selfie[0]}} width=200 height=200>
                               {% else %}
                                 <span> (Photo to be uploaded) </span>
-                              {% endif %} 
+                              {% endif %}  
                               <div class="container">
                                 <h2> {{member.name}} </h2>
                                 <p class="title">  {{member.title}} </p>

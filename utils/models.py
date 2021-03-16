@@ -16,7 +16,7 @@ class Admins(UserMixin, db.Model):
 class Highlights(db.Model):
     id = db.Column(db.Integer, primary_key=True) 
     postdate = db.Column(db.DateTime)
-    title = db.Column(db.Text, nullable=False)
+    title = db.Column(db.Text, unique=True, nullable=False)
     content = db.Column(db.Text, nullable=False) 
     imgs = db.Column(db.String, nullable=False)
     author = db.Column(db.ForeignKey(Admins.username, ondelete='CASCADE', onupdate='CASCADE'), nullable=False)  
@@ -38,7 +38,7 @@ class Pages(db.Model):
     
 class Members(db.Model):
     id = db.Column(db.Integer, primary_key=True) 
-    name = db.Column(db.Text, nullable=False)
+    name = db.Column(db.Text, unique=True, nullable=False)
     selfie = db.Column(db.String)
     title = db.Column(db.Text)
     desc = db.Column(db.Text)

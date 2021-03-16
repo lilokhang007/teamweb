@@ -31,11 +31,11 @@ if __name__ == '__main__':
     add_admin_page(app)
     
     from utils.models import Highlights, Pages, Members
-    def tidy_blog(blog):
+    def tidy_blog(blog, img_key = 'imgs', content_key= 'content'):
         # Tidy up the values of the input dictionary
-        if blog['imgs'] is not None:
-          blog['imgs'] = [FILE_UPLOAD_DIR + img for img in eval(blog['imgs'])] # set proper blog image path
-        blog['content'] = blog['content'].replace("\n", Markup("<br></br>")) # set html tag
+        if blog[img_key] is not None:
+          blog[img_key] = [FILE_UPLOAD_DIR + img for img in eval(blog[img_key])] # set proper blog image path
+        blog[content_key] = blog[content_key].replace("\n", Markup("<br></br>")) # set html tag
         return blog
         
     @app.route('/static/<path:path>') 
@@ -46,10 +46,8 @@ if __name__ == '__main__':
     @app.route('/index')  
     def index(): 
         blogs = Highlights.query.all()
-        blogs = [result.__dict__ for result in blogs] # convert to dict list
-        for blog in blogs:
-            blog = tidy_blog(blog)
-            
+        blogs = [tidy_blog(result.__dict__) for result in blogs] # convert to dict list
+        
         return render_template('index.html', blogs=blogs)
     
     @app.route('/blogs') 
@@ -86,7 +84,8 @@ if __name__ == '__main__':
     @app.route('/team') 
     def team(): 
         members = Members.query.all()
-        members = [result.__dict__ for result in members] # convert to dict list
+        members = [tidy_blog(result.__dict__, img_key='selfie', content_key='desc') for result in members] # convert to dict list
+
         return render_template('team.html', members=members)
          
     @app.route('/research') 

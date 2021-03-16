@@ -19,11 +19,14 @@ def init_to_db():
     Pages(type='Mission', content='This is a testing mission.'),
     Pages(type='About Us', content='This is a testing about us.'),
     Pages(type='Join', content='This is a testing join message.'),
-    Members(name='Li Lok Hang', title='Research Assistant', desc='I love programming.', email='lilokhang007@gmail.com', telno='12345678'),
-    *pub_list, # add all publications from init_pub
-  ] 
-  
-  for item in init_items: 
+    Members(name='Alan, Li Lok Hang', title='Research Assistant', desc='I love programming.', email='lilokhang007@gmail.com', telno='12345678', selfie=default_img),
+    Members(name='Nathan, Wong Yat Chun', title='Research Assistant', desc='I love programming, too.', email='nathanyc@hku.hk', telno='12345678', selfie=default_img),
+    Members(name='Jeffrey, Chang Man Hei', title='Ph.D Student', desc='I do not love programming.', email='mhjchang@connect.hku.hk', telno='12345678', selfie=default_img),
+    Members(name='Lee Chun Kin', title='Programmer', desc='I really love programming.', email='leeck123@hku.hk', telno='12345678', selfie=default_img),
+    *pub_list, # add all publications from init_pub   
+  ]   
+   
+  for item in init_items:  
     try:
       db.session.add(item)
       db.session.commit() 

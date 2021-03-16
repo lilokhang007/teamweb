@@ -1,6 +1,7 @@
 # -*- coding: big5 -*-.
-
 from utils.models import Publications
+
+# dictionary of publications
 pubs = {
   '2019': [
       "Lam, Y. F. and Roy, S. (2019) 'Climate Adaptation of Sea-level Rise in Hong Kong.' In Extreme Weather Events and Human Health: International Case Studies 117-130. Akhtar, R. (Ed.) Springer.",
@@ -60,6 +61,7 @@ pubs = {
   ]
 }
 
+# Change dictionary to list of objects
 pub_list = []
 for key, values in pubs.items():
   for value in values:

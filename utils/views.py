@@ -39,7 +39,7 @@ class PageView(AdminView):
         'imgs': MultipleImageUploadField(
             'Images',
             base_path = FILE_UPLOAD_DIR,  
-            thumbnail_size=(100, 100, True),
+            thumbnail_size=(100, 100, True), 
             namegen=prefix_name, 
         )
     }    
@@ -47,8 +47,8 @@ class PageView(AdminView):
 class MemberView(AdminView):
     column_exclude_list = ['selfie',] 
     form_extra_fields = { 
-        'selfie': ImageUploadField(
-            'Selfie Image',
+        'selfie': MultipleImageUploadField(
+            'Selfie Image',  
             base_path = FILE_UPLOAD_DIR,  
             thumbnail_size=(100, 100, True),
             namegen=prefix_name,  
