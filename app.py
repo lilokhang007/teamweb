@@ -1,5 +1,6 @@
 from config import APP_HOST, APP_PORT, SQLALCHEMY_DATABASE_URI, FLASK_SECRET_KEY, FLASK_ADMIN_SWATCH
 from flask import Flask, request, render_template, send_from_directory, Markup
+from flask_bcrypt import Bcrypt 
 from path import FILE_UPLOAD_DIR
 import os 
 import argparse
@@ -15,9 +16,10 @@ def create_app():
     # set optional bootswatch theme   
     app.config['FLASK_ADMIN_SWATCH'] = FLASK_ADMIN_SWATCH
     app.config['SECRET_KEY'] = FLASK_SECRET_KEY
+    app.config['SECURITY_PASSWORD_SALT'] = 'some arbitrary super secret string'
     app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    app.config['UPLOAD_FOLDER'] = FILE_UPLOAD_DIR
+    app.config['UPLOAD_FOLDER'] = FILE_UPLOAD_DIR 
      
     return app
 
@@ -25,8 +27,9 @@ def add_admin_page(app = None):
     from admin import create_admin
     admin = create_admin()
     admin.init_app(app)
-        
+    
 app = create_app()
+bcrypt = Bcrypt(app)
 if __name__ == '__main__':
     add_admin_page(app)
     

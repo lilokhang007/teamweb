@@ -1,5 +1,7 @@
+email-validator
 flask
 flask-admin
 flask-login
+flask-security
 flask-sqlalchemy
 flask-wtf
