@@ -13,6 +13,7 @@ SQLALCHEMY_DATABASE_URI = 'postgresql://{}:{}@{}:5432/{}'.format(DB_USER,DB_PW,D
 FLASK_SECRET_KEY = 'mySecret'
 
 # Flask Admin Interface Setup
+SECURITY_PASSWORD_SALT = 'MY_SALT' # for generating password hashs
 FLASK_ADMIN_USER = 'admin'
 FLASK_ADMIN_PW = 'aWeb2021!'
 FLASK_ADMIN_SWATCH = 'flatly'

@@ -1,4 +1,4 @@
-from config import APP_HOST, APP_PORT, SQLALCHEMY_DATABASE_URI, FLASK_SECRET_KEY, FLASK_ADMIN_SWATCH
+from config import APP_HOST, APP_PORT, SQLALCHEMY_DATABASE_URI, SECURITY_PASSWORD_SALT, FLASK_SECRET_KEY, FLASK_ADMIN_SWATCH
 from flask import Flask, request, render_template, send_from_directory, Markup
 from flask_bcrypt import Bcrypt 
 from path import FILE_UPLOAD_DIR
@@ -16,7 +16,7 @@ def create_app():
     # set optional bootswatch theme   
     app.config['FLASK_ADMIN_SWATCH'] = FLASK_ADMIN_SWATCH
     app.config['SECRET_KEY'] = FLASK_SECRET_KEY
-    app.config['SECURITY_PASSWORD_SALT'] = 'some arbitrary super secret string'
+    app.config['SECURITY_PASSWORD_SALT'] = SECURITY_PASSWORD_SALT
     app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['UPLOAD_FOLDER'] = FILE_UPLOAD_DIR 
