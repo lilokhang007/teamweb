@@ -31,9 +31,9 @@ def add_admin_page(app = None):
 app = create_app()
 bcrypt = Bcrypt(app)
 if __name__ == '__main__':
-    add_admin_page(app)
+    add_admin_page(app) # add admin page to app
     
-    from utils.models import Slides, Highlights, Pages, Members
+    from utils.models import Slides, Highlights, Partners, Pages, Members
     def tidy_blog(blog, img_key = 'imgs', content_key= 'content'):
         # Tidy up the values of the input dictionary
         if blog[img_key] is not None:
@@ -41,6 +41,7 @@ if __name__ == '__main__':
         blog[content_key] = blog[content_key].replace("\n", Markup("<br></br>")) # set html tag
         return blog
         
+    # Routing functions
     @app.route('/static/<path:path>') 
     def static_files(path): 
         return send_from_directory('/static', path) 
@@ -52,8 +53,10 @@ if __name__ == '__main__':
         slides = [tidy_blog(result.__dict__, content_key= 'desc') for result in slides] 
         blogs = Highlights.query.all()
         blogs = [tidy_blog(result.__dict__) for result in blogs] 
-        
-        return render_template('index.html', slides=slides, blogs=blogs) 
+        partners = Partners.query.all()
+        partners = [tidy_blog(result.__dict__, content_key= 'desc') for result in partners] 
+                
+        return render_template('index.html', slides=slides, blogs=blogs, partners=partners) 
     
     @app.route('/blogs') 
     def blog():   

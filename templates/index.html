@@ -18,6 +18,7 @@
          height: 100%;
          color: #fff;
       } 
+      
       {% for slide in slides %} 
       #slide{{loop.index}}:checked ~ #slides .inner {
          margin-left: -{{(loop.index-1)*100}}%;
@@ -57,7 +58,6 @@
             margin: 0 auto; 
          }
       }
-  
       </style>
 
       <a name="home"></a>
@@ -79,9 +79,10 @@
                               <div class="slide slide_{{loop.index}}">
                                  <div class="slide-content">
                                     <h2>{{slide.desc}}</h2> 
-                                    <p>Content for Slide {{loop.index}}</p>
+                                    <h3>Comment for Slide {{loop.index}}</h3>
+                                    <a href={{slide.href}}> <img src = {{slide.imgs[0]}} width=300 height=300> </a> 
                                  </div>  
-                              </div>
+                              </div> 
                               {% endfor %}
                            </div> 
                         </div>
@@ -106,7 +107,7 @@
                           <div class="i"> 
                                 <div class="ph"> 
                                   {% if blog.imgs[0] %}
-                                  <a href='blogs?id={{blog.id}}'> <img src = {{blog.imgs[0]}} width=200 height=200> </img> </a>
+                                  <a href='blogs?id={{blog.id}}'> <img src = {{blog.imgs[0]}} width=200 height=200> </a>
                                   {% else %}
                                   <a href='blogs?id={{blog.id}}'> {{blog.title}} </a>
                                   {% endif %}
@@ -126,7 +127,13 @@
 
             <section class="partner" style='background-color: rgba(215,215,145)'>
                   <h1>Collaboration and Partners</h1> 
-            </section> 
+                  <div class="flex-container" style='justify-content: space-evenly;'>
+                     
+                    {% for partner in partners %}
+                      <img src ={{partner.imgs[0]}} width=180vw height=30vw>
+                    {% endfor %}
+                  </div> 
+            </section>  
             
       </div>
 </body>

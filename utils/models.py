@@ -46,6 +46,12 @@ class Highlights(db.Model):
     imgs = db.Column(db.String, nullable=False)
     author = db.Column(db.ForeignKey(Admins.username, ondelete='CASCADE', onupdate='CASCADE'), nullable=False)  
         
+class Partners(db.Model):
+    id = db.Column(db.Integer, primary_key=True) 
+    desc = db.Column(db.Text) 
+    imgs = db.Column(db.String, nullable=False)
+    href = db.Column(db.Text)  
+
 PageTypes = [
     ("Vision", "Vision"),
     ("Mission", "Mission"),

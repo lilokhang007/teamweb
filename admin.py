@@ -6,8 +6,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, login_user, logout_user, login_required
 from utils.forms import LoginForm
 from utils.links import LoginMenuLink, LogoutMenuLink
-from utils.views import LoginView, AdminView, SlideView, HighlightView, PageView, MemberView
-from utils.models import db, Admins, Slides, Highlights, Pages, Members, Publications          
+from utils.views import LoginView, AdminView, SlideView, HighlightView, PartnerView, PageView, MemberView
+from utils.models import db, Admins, Slides, Highlights, Partners, Pages, Members, Publications          
 from path import FILE_UPLOAD_DIR 
 
 
@@ -23,7 +23,7 @@ def login():
               
             flash('Login requested for user {}, remember_me={}'.format(
                 form.username.data, form.remember_me.data))
-            return redirect('/admin/')
+            return redirect('/admin/') 
         else:
             flash('Authentication Error!')  
             return render_template('login.html', title='Sign In', form=form) 
@@ -44,11 +44,12 @@ def create_admin():
     admin = Admin(name='Team Webpage Admin Page', template_mode='bootstrap3') 
     # administrative views
     admin.add_view(AdminView(Admins, db.session))
-    admin.add_view(SlideView(Slides, db.session))
-    admin.add_view(HighlightView(Highlights, db.session))  
-    admin.add_view(PageView(Pages, db.session))
-    admin.add_view(MemberView(Members, db.session))
-    admin.add_view(LoginView(Publications, db.session))
+    admin.add_view(SlideView(Slides, db.session, category="Index Page"))
+    admin.add_view(HighlightView(Highlights, db.session, category="Index Page"))  
+    admin.add_view(PartnerView(Partners, db.session, category="Index Page"))
+    admin.add_view(PageView(Pages, db.session)) 
+    admin.add_view(MemberView(Members, db.session, category="Static Data"))  
+    admin.add_view(LoginView(Publications, db.session, category="Static Data"))
     admin.add_link(LogoutMenuLink(name='Logout', category='', url="/logout"))
     admin.add_link(LoginMenuLink(name='Login', category='', url="/auth"))
     admin.add_link(MenuLink(name='Return to the Site', category='', url="/index"))
