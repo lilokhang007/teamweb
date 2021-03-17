@@ -33,7 +33,7 @@ bcrypt = Bcrypt(app)
 if __name__ == '__main__':
     add_admin_page(app)
     
-    from utils.models import Highlights, Pages, Members
+    from utils.models import Slides, Highlights, Pages, Members
     def tidy_blog(blog, img_key = 'imgs', content_key= 'content'):
         # Tidy up the values of the input dictionary
         if blog[img_key] is not None:
@@ -48,10 +48,12 @@ if __name__ == '__main__':
     @app.route('/')
     @app.route('/index')  
     def index(): 
+        slides = Slides.query.all()
+        slides = [tidy_blog(result.__dict__, content_key= 'desc') for result in slides] 
         blogs = Highlights.query.all()
-        blogs = [tidy_blog(result.__dict__) for result in blogs] # convert to dict list
+        blogs = [tidy_blog(result.__dict__) for result in blogs] 
         
-        return render_template('index.html', blogs=blogs)
+        return render_template('index.html', slides=slides, blogs=blogs) 
     
     @app.route('/blogs') 
     def blog():   

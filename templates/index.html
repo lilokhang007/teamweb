@@ -2,56 +2,99 @@
 {% set page = "index" %}
 {% block content %}
 <body>
+      <style>
+      #slides .inner {
+         transition: margin-left 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000);
+         width: {{slides|length*100}}%;
+         line-height: 0;
+         height: 400px; 
+      }
+      #slides .slide {
+         width: {{100/slides|length}}%; 
+         float:left;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 100%;
+         color: #fff;
+      } 
+      {% for slide in slides %} 
+      #slide{{loop.index}}:checked ~ #slides .inner {
+         margin-left: -{{(loop.index-1)*100}}%;
+      }
+      #slides .slide_{{loop.index}} {
+         background-color: rgb(0,{{(255 - 255/loop.index)|int}},{{(255 - 255/loop.index)|int}});
+      }
+      {% endfor %}     
+      
+      {% for slide in slides %}#slide{{loop.index}}:checked ~ #controls label:nth-child({{loop.index % loop.length + 1}}){%- if not loop.last -%},{% endif %}
+      {% endfor %} { 
+         background: url(https://image.flaticon.com/icons/svg/130/130884.svg) no-repeat;
+         float:right;
+         margin-right: -50px;
+         display: block;
+      }  
+      
+      {% for slide in slides %}#slide{{loop.index}}:checked ~ #controls label:nth-last-child({{(loop.length+1-loop.index) % loop.length + 1}}){%- if not loop.last -%},{% endif %}
+      {% endfor %} {
+         background: url(https://image.flaticon.com/icons/svg/130/130882.svg) no-repeat;
+         float:left;
+         margin-left: -50px; 
+         display: block;
+      }
+      {% for slide in slides %}#slide{{loop.index}}:checked ~ #bullets label:nth-child({{loop.index}}){%- if not loop.last -%},{% endif %}
+      {% endfor %} {
+         background: #444;
+      }
+      @media screen and (max-width: 900px) {
+         {% for slide in slides %}#slide{{loop.index}}:checked ~ #controls label:nth-child({{loop.index % loop.length + 1}}),
+         #slide{{loop.index}}:checked ~ #controls label:nth-last-child({{(loop.length+1-loop.index) % loop.length + 1}}){%- if not loop.last -%},{% endif %} 
+         {% endfor %} {
+            margin: 0; 
+         }
+         #slides { 
+            max-width: calc(100% - 140px); 
+            margin: 0 auto; 
+         }
+      }
+  
+      </style>
+
       <a name="home"></a>
       <div class="wrapper">
             <section class="top">
                   <h1>Top section</h1>
                   <div id="slider">
-                     <input type="radio" name="slider" id="slide1" checked>
-                     <input type="radio" name="slider" id="slide2">
-                     <input type="radio" name="slider" id="slide3">
-                     <input type="radio" name="slider" id="slide4">
+                     {% for slide in slides %}
+                       {% if loop.first %}
+                         <input type="radio" name="slider" id="slide{{loop.index}}" checked>
+                       {% else %}
+                         <input type="radio" name="slider" id="slide{{loop.index}}">
+                       {% endif %}
+                     {% endfor %}
                      <div id="slides">
-                        <div id="overflow">
+                        <div id="overflow"> 
                            <div class="inner">
-                              <div class="slide slide_1">
+                              {% for slide in slides %}
+                              <div class="slide slide_{{loop.index}}">
                                  <div class="slide-content">
-                                    <h2>Slide 1</h2>
-                                    <p>Content for Slide 1</p>
-                                 </div>
+                                    <h2>{{slide.desc}}</h2> 
+                                    <p>Content for Slide {{loop.index}}</p>
+                                 </div>  
                               </div>
-                              <div class="slide slide_2">
-                                 <div class="slide-content">
-                                    <h2>Slide 2</h2>
-                                    <p>Content for Slide 2</p>
-                                 </div>
-                              </div>
-                              <div class="slide slide_3">
-                                 <div class="slide-content">
-                                    <h2>Slide 3</h2>
-                                    <p>Content for Slide 3</p>
-                                 </div>
-                              </div>
-                              <div class="slide slide_4">
-                                 <div class="slide-content">
-                                    <h2>Slide 4</h2>
-                                    <p>Content for Slide 4</p>
-                                 </div>
-                              </div>
-                           </div>
+                              {% endfor %}
+                           </div> 
                         </div>
                      </div>
                      <div id="controls">
-                        <label for="slide1"></label>
-                        <label for="slide2"></label>
-                        <label for="slide3"></label>
-                        <label for="slide4"></label>
+                        {% for slide in slides %}
+                        <label for="slide{{loop.index}}"></label>
+                        {% endfor %}
                      </div>
                      <div id="bullets">
-                        <label for="slide1"></label>
-                        <label for="slide2"></label>
-                        <label for="slide3"></label>
-                        <label for="slide4"></label> 
+                        {% for slide in slides %}
+                        <label for="slide{{loop.index}}"></label>
+                        {% endfor %} 
                      </div>
                   </div>
             </section>

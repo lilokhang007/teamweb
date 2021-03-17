@@ -6,8 +6,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, login_user, logout_user, login_required
 from utils.forms import LoginForm
 from utils.links import LoginMenuLink, LogoutMenuLink
-from utils.views import LoginView, AdminView, HighlightView, PageView, MemberView
-from utils.models import db, Admins, Highlights, Pages, Members, Publications          
+from utils.views import LoginView, AdminView, SlideView, HighlightView, PageView, MemberView
+from utils.models import db, Admins, Slides, Highlights, Pages, Members, Publications          
 from path import FILE_UPLOAD_DIR 
 
 
@@ -44,6 +44,7 @@ def create_admin():
     admin = Admin(name='Team Webpage Admin Page', template_mode='bootstrap3') 
     # administrative views
     admin.add_view(AdminView(Admins, db.session))
+    admin.add_view(SlideView(Slides, db.session))
     admin.add_view(HighlightView(Highlights, db.session))  
     admin.add_view(PageView(Pages, db.session))
     admin.add_view(MemberView(Members, db.session))

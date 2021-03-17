@@ -24,12 +24,23 @@ class AdminView(LoginView):
         model.password = bcrypt.generate_password_hash(model.password).decode('utf8')
         # as another example 
         if is_created:
-            model.confirmed_at = datetime.datetime.now()   
+            model.confirmed_at = datetime.datetime.now()    
 
     form_extra_fields = {
         'password': PasswordField() 
     }
-                          
+
+class SlideView(LoginView):     
+    column_exclude_list = ['imgs',] 
+    form_extra_fields = {
+        'imgs': MultipleImageUploadField(
+            'Images',
+            base_path = FILE_UPLOAD_DIR,  
+            thumbnail_size=(100, 100, True),
+            namegen=prefix_name, 
+        )
+    } 
+                              
 class HighlightView(LoginView):    
     column_exclude_list = ['imgs',] 
     form_extra_fields = {

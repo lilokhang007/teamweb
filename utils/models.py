@@ -16,7 +16,7 @@ class Roles(db.Model, RoleMixin):
     name = db.Column(db.String(80), unique=True)
     description = db.Column(db.String(255)) 
     
-class Admins(UserMixin, db.Model):
+class Admins(UserMixin, db.Model): 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(255), unique=True, nullable=False, index=True)
     password = db.Column(db.String(255), nullable=False)
@@ -32,6 +32,12 @@ class Admins(UserMixin, db.Model):
 user_datastore = SQLAlchemyUserDatastore(db, Admins, Roles)
 security = Security(app, user_datastore)
              
+class Slides(db.Model):
+    id = db.Column(db.Integer, primary_key=True) 
+    desc = db.Column(db.Text) 
+    imgs = db.Column(db.String, nullable=False)
+    href = db.Column(db.Text)
+
 class Highlights(db.Model):
     id = db.Column(db.Integer, primary_key=True) 
     postdate = db.Column(db.DateTime())
